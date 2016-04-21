@@ -7,7 +7,7 @@ using namespace std;
 
 //Функції-оператори з мови Флойда-Еванса
 //Примається вказівник на стрічку-магазин, індикатор символу та вхідну стрічку
-
+//Floyd-Evans function-operator
 bool L0(string, int, string);
 bool L1(string, int, string);
 bool L2(string, int, string);
