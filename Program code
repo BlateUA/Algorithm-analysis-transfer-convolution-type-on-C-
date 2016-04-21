@@ -5,8 +5,9 @@
 
 using namespace std;
 
-//Функції-оператори з мови Флойда-Еванса
-//Примається вказівник на стрічку-магазин, індикатор символу та вхідну стрічку
+
+//Floyd-Evans language function-operators
+//Input pointer to string-stack, symbol indicator and input string
 
 bool L0(string, int, string);
 bool L1(string, int, string);
@@ -36,7 +37,7 @@ void main()
 void start(string input)
 {
 	string temp;
-	input = '$' + input + '$';//добавляємо індикатори початку та кінця
+	input = '$' + input + '$';//add begin and end indicators
 	int i = 0;
 	temp = input[i];
 	if (L11(temp, i, input) == 1) //Запускаємо перший оператор L11
@@ -53,7 +54,7 @@ void start(string input)
 
 bool L11(string temp, int ind, string input)
 {
-	ind++;//переходимо до наступного символу
+	ind++;//go to next symbol
 	temp = temp + input[ind];
 	if (L0(temp, ind, input) == 1) return 1;
 	else return 0;
@@ -63,8 +64,8 @@ bool L0(string temp, int ind, string input)
 {
 	if (temp[temp.length() - 1] == '(')
 	{
-		ind++;//переходимо до наступного символу
-		temp = temp + input[ind];//добавляємо один символ в магазин
+		ind++;//go to next symbol
+		temp = temp + input[ind];//add one symbol to stack
 		if (L0(temp, ind, input) == 1) return 1;
 		else return 0;
 	}
@@ -78,9 +79,9 @@ bool L1(string temp, int ind, string input)
 	if (temp[temp.length() - 1] == 'a')
 	{
 		replace(temp.begin(), temp.end(), 'a', 'F');//заміняємо а на F
-		ind++;//переходимо до наступного символу
-		temp = temp + input[ind];//добавляємо один символ в магазин
-		cout << '6';//видача 6
+		ind++;//go to next symbol
+		temp = temp + input[ind];//add one symbol to stack
+		cout << '6';//out '6'
 	}
 	if (L2(temp, ind, input) == 1) return 1;
 	else return 0;
@@ -88,12 +89,13 @@ bool L1(string temp, int ind, string input)
 
 bool L2(string temp, int ind, string input)
 {
-	if (temp.length() > 3)//необхідна перевірка для того, щоб вказівник не вийшов за межі стрічки
+	if (temp.length() > 3)	//must have if because pointer could go out the limit of string
+
 	{
 		if ((temp[temp.length() - 4] == 'T') && (temp[temp.length() - 3] == '*') && (temp[temp.length() - 2] == 'F') == 1)
 		{
-			temp.replace(temp.length() - 4, 3, "T");//заміняємо T*F на T
-			cout << '3';//видача 3
+			temp.replace(temp.length() - 4, 3, "T");//change T+F to T
+			cout << '3';//out '3'
 			if (L4(temp, ind, input) == 1) return 1;
 			else return 0;
 		}
@@ -108,8 +110,8 @@ bool L3(string temp, int ind, string input)
 {
 	if (temp[temp.length() - 2] == 'F')
 	{
-		replace(temp.begin(), temp.end(), 'F', 'T');//заміняємо F на T
-		cout << '4';//видача 4
+		replace(temp.begin(), temp.end(), 'F', 'T');//change F to T
+		cout << '4';//out 4
 	}
 	if (L4(temp, ind, input) == 1) return 1;
 	else return 0;
@@ -119,8 +121,8 @@ bool L4(string temp, int ind, string input)
 {
 	if ((temp[temp.length() - 2] == 'T') && (temp[temp.length() - 1] == '*') == 1)
 	{
-		ind++;//переходимо до наступного символу
-		temp = temp + input[ind];//добавляємо один символ в магазин
+		ind++;//go to next symbol
+		temp = temp + input[ind];//add one symbol to stack
 		if (L0(temp, ind, input) == 1) return 1;
 		else return 0;
 	}
@@ -130,12 +132,12 @@ bool L4(string temp, int ind, string input)
 
 bool L5(string temp, int ind, string input)
 {
-	if (temp.length() > 3) //необхідна перевірка для того, щоб вказівник не вийшов за 				   //межі стрічки
+	if (temp.length() > 3) //must have if because pointer could go out the limit of string
 	{
 		if ((temp[temp.length() - 4] == 'E') && (temp[temp.length() - 3] == '+') && (temp[temp.length() - 2] == 'T') == 1)
 		{
-			temp.replace(temp.length() - 4, 3, "E");//заміняємо E+T на E
-			cout << '1';//видача 1
+			temp.replace(temp.length() - 4, 3, "E");//change E+T to E
+			cout << '1';//out 1
 			if (L7(temp, ind, input) == 1) return 1;
 			else return 0;
 		}
@@ -148,8 +150,8 @@ bool L6(string temp, int ind, string input)
 {
 	if (temp[temp.length() - 2] == 'T')
 	{
-		replace(temp.begin(), temp.end(), 'T', 'E');//заміняємо T на E
-		cout << '2';//видача 2
+		replace(temp.begin(), temp.end(), 'T', 'E');//change T to E
+		cout << '2';//out 2
 	}
 	if (L7(temp, ind, input) == 1) return 1;
 	else return 0;
@@ -159,8 +161,8 @@ bool L7(string temp, int ind, string input)
 {
 	if ((temp[temp.length() - 2] == 'E') && (temp[temp.length() - 1] == '+') == 1)
 	{
-		ind++;//переходимо до наступного символу
-		temp = temp + input[ind];//добавляємо один символ в магазин
+		ind++;//go to next symbol
+		temp = temp + input[ind];//add one symbol to stack
 		if (L0(temp, ind, input) == 1) return 1;
 		else return 0;
 	}
@@ -170,14 +172,14 @@ bool L7(string temp, int ind, string input)
 
 bool L8(string temp, int ind, string input)
 {
-	if (temp.length() > 3) //необхідна перевірка для того, щоб вказівник не вийшов за 				  //межі стрічки
+	if (temp.length() > 3) //must have if because pointer could go out the limit of string
 	{
 		if ((temp[temp.length() - 3] == '(') && (temp[temp.length() - 2] == 'E') && (temp[temp.length() - 1] == ')') == 1)
 		{
 			temp.replace(temp.length() - 3, 3, "F");//заміняємо (E) на F
-			ind++;//переходимо до наступного символу
-			temp = temp + input[ind];//добавляємо один символ в магазин
-			cout << '5';//видача 5
+			ind++;//go to next symbol
+			temp = temp + input[ind];//add one symbol to stack
+			cout << '5';//out 5
 			if (L2(temp, ind, input) == 1) return 1;
 			else return 0;
 		}
@@ -188,9 +190,9 @@ bool L8(string temp, int ind, string input)
 
 bool L9(string temp, int ind, string input)
 {
-	if ((temp[0] == '$') && (temp[1] == 'E') && (temp[temp.length() - 1] == '$') == 1) 	return 1;//якщо знайшло 
-																								 //кінцевий(тобто початковий) символ, то дає допуск.
-	if (L10(temp, ind, input) == 1) return 1;//в інших випадках L10 фіксує помилку.
+	if ((temp[0] == '$') && (temp[1] == 'E') && (temp[temp.length() - 1] == '$') == 1) 	return 1;//if found last(first) symbol then we got admission
+																							
+	if (L10(temp, ind, input) == 1) return 1;//else L10 throws error
 	else return 0;
 
 }
