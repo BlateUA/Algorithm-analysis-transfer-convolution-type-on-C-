@@ -1,25 +1,19 @@
 # Algorithm-analysis-transfer-convolution-type-on-C-++. Discrete math course project.
 
-Алгоритм розбору типу “перенос-згортка” та приналежність чи ні граматиці.
-Курсова з дискретної математики.
+Input: string with symbols: (,),*,+,а.
 
-Вхід: стрічка символів з (,),*,+,а.
+Output: Algorithm analysis transfer convolution type. Is a string in grammar G0 with rules: E->E+T, E->T, T->T*F, T->F, F->(E), F->a.
 
-Вихід:Алгоритм розбору типу “перенос-згортка” та приналежність чи ні граматиці з правилами: 
-	  E->E+T,  E->T
-		 T->T*F,  T->F
-	  F->(E),  F->a.
-	  
-Реалізація: за основу взято аналізатор на мові Флойда-Еванса.
+Floyd-Evans language analyser was taken as a base for my project.
 
-Функції L0-L11 відповідають операторам з аналізатора на мові Флойда-Еванса.
+Function L0-L11 is the same as operators from Floyd-Evans language analyser.
 
-Функція start запускає весь процес та ініціалізує змінні.
+Function start is starting a project and initializating variables.
 
-String input – змінна, для зберігання вхідних даних.
+String input - a variable for an input data.
 
-Int I – індикатор, для input.
+Int i - indicator for input.
 
-String temp – тимчасова змінна для магазину.
+String temp - temporary variable for stack.
 
-Програма реалізована рекурсивним методом.
+Program is using recursive method.
