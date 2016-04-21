@@ -1,4 +1,5 @@
 # Algorithm-analysis-transfer-convolution-type-on-C-++
+Discrete math course project.
 Алгоритм розбору типу “перенос-згортка” та приналежність чи ні граматиці.
 Курсова з дискретної математики.
 
