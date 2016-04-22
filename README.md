@@ -14,6 +14,6 @@ String input - a variable for an input data.
 
 Int i - indicator for input.
 
-String temp - temporary variable for stack.
+String temp - temporary variable to contain sth.
 
 Program is using recursive method.
